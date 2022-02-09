@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet signature</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <h1>Encrypter</h1>
+
+    <h2>Encrypt</h2>
+    <input type="text" id="input" placeholder="Enter Data">
+    <input type="text" id="key" placeholder="Enter Key">
+    <button id="clearMake">Clear</button>
+    <button id="button">Encrypt</button>
+    <div id="signature">result</div>
+
+    <h2>Decrypt</h2>
+    <input type="text" id="input2" placeholder="Enter your signature">
+    <input type="text" id="key2" placeholder="Enter Key">
+    <button id="clearMake2">Clear</button>
+    <button id="button2">Decrypt</button>
+    <div id="verify">result</div>
+    
+
+    <h4>By Jagg</h4>
+    <script type="text/javascript"  src="./bower_components/crypto-js/crypto-js.js"></script>
+    <script type="text/javascript">
+
+    let button = document.querySelector('#button');
+    let input = document.querySelector('#input');
+    let key = document.querySelector('#key');
+    let signature = document.querySelector('#signature');
+
+    let button2 = document.querySelector('#button2');
+    let input2 = document.querySelector('#input2');
+    let verify = document.querySelector('#verify');
+    let key2 = document.querySelector('#key2');
+
+    let clearMake = document.querySelector('#clearMake');
+    let clearMake2 = document.querySelector('#clearMake2');
+
+    clearMake.addEventListener('click', function(){
+        input.value = '';
+        key.value = '';
+        signature.innerHTML = '';
+    });
+
+    clearMake2.addEventListener('click', function(){
+        input2.value = '';
+        key2.value = '';
+        verify.innerHTML = '';
+    });
+
+    function encrypt(text,password){
+        let encrypted = CryptoJS.AES.encrypt(text,password);
+        return encrypted.toString();
+    }
+
+    function decrypt(text,password){
+        let decrypted = CryptoJS.AES.decrypt(text,password);
+        return decrypted.toString(CryptoJS.enc.Utf8);
+    }
+
+   
+
+    button.addEventListener('click', function() {
+        let name = input.value;
+        let keyr = key.value;
+        //change style color to black
+        signature.style.color = 'white';
+        let encrypted = encrypt(name,keyr);
+        signature.innerHTML = encrypted;
+        }
+    );
+
+    button2.addEventListener('click', function() {
+        let name = input2.value;    
+        let keyr = key2.value;
+        verify.style.color = 'whitel';
+        let decrypted = decrypt(name,keyr);
+        verify.innerHTML = decrypted;
+        }
+    );
+
+    </script>
+
+</body>
+</html>

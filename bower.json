@@ -1,0 +1,19 @@
+{
+  "name": "Signer",
+  "main": "index.js",
+  "authors": [
+    "NeoMitashi"
+  ],
+  "description": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
+}
