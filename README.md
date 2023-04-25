@@ -1,2 +1,2 @@
 # Encrypter
-Basic encrypter for AES
+Basic encrypter using AES
