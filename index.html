@@ -53,7 +53,7 @@
         key2.value = '';
         verify.innerHTML = '';
     });
-
+        
     function encrypt(text,password){
         let encrypted = CryptoJS.AES.encrypt(text,password);
         return encrypted.toString();
@@ -63,8 +63,6 @@
         let decrypted = CryptoJS.AES.decrypt(text,password);
         return decrypted.toString(CryptoJS.enc.Utf8);
     }
-
-   
 
     button.addEventListener('click', function() {
         let name = input.value;
